@@ -1,0 +1,6 @@
+@FundRaisingApp_HostAddress = http://localhost:5007
+
+GET {{FundRaisingApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
