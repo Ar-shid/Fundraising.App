@@ -1,4 +1,5 @@
 ﻿using FundRaising.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace FundRaising.Data
 {
-    public class FundRaisingDBContext : IdentityDbContext<ApplicationUser>
+    public class FundRaisingDBContext : IdentityDbContext<ApplicationUser, Role, string, Microsoft.AspNetCore.Identity.IdentityUserClaim<string>, UserRole,
+        Microsoft.AspNetCore.Identity.IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public FundRaisingDBContext(DbContextOptions<FundRaisingDBContext> options)
             : base(options)
@@ -24,6 +26,8 @@ namespace FundRaising.Data
 
           //  modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
             base.OnModelCreating(modelBuilder);
+
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FundRaisingDBContext).Assembly);
             DisableCascadeDelete(modelBuilder);
         }

@@ -1,7 +1,7 @@
 ﻿using FundRaising.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using static CaseManager.Common.ModelConstants;
+using static FundRaising.Common.ModelConstants;
 
 namespace FundRaising.Data.Configuration
 {

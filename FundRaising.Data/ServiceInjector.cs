@@ -17,9 +17,11 @@ namespace FundRaising.Data
             services.AddDbContext<FundRaisingDBContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, Role>()
                 .AddEntityFrameworkStores<FundRaisingDBContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddRoleManager<RoleManager<Role>>()
+        .AddUserManager<UserManager<ApplicationUser>>();
 
             return services;
         }

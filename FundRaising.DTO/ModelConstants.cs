@@ -1,4 +1,4 @@
-﻿namespace CaseManager.Common
+﻿namespace FundRaising.Common
 {
     public static class ModelConstants
     {
@@ -44,6 +44,12 @@
         {
             public const int DescriptionMaxLength = 100;
         }
-
+        public static class Roles
+        {
+            public const string Administrator = "Admin";
+            public const string SalePerson = "Sales Person";
+            public const string Organizer = "Organizer";
+            public const string Participant = "Participant";
+        }
     }
 }

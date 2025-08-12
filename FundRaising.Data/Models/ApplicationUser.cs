@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using FundRaising.Data.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace FundRaising.Data.Models
 {
@@ -16,7 +17,8 @@ namespace FundRaising.Data.Models
         public DateTime CreatedOn { get; set; }
 
         public bool IsDeleted { get; set; }
+        public ActiveStatus ActiveStatus { get; set; }
 
-        public ICollection<UserRole> Roles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

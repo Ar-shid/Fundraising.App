@@ -1,4 +1,4 @@
-﻿using CaseManager.Common;
+﻿using FundRaising.Common;
 using FundRaising.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

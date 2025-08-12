@@ -8,6 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using FundRaisingApp.Infrastructure.Configuration;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,6 +88,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+using (IServiceScope serviceScope = app.Services.CreateScope())
+{
+    FundRaisingDBContext dbContext =
+        serviceScope.ServiceProvider.GetRequiredService<FundRaisingDBContext>();
+   
+
+    dbContext.Database.Migrate();
+   
+
+}
+app.SeedData();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
