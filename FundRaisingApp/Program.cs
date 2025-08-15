@@ -10,6 +10,9 @@ using FundRaisingApp.Infrastructure.Configuration;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using FundRaising.Common.Mappings;
+using System.Reflection;
+using FundRaising.DTO.CompaignModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,6 +84,8 @@ builder.Services.AddSwaggerGen(options =>
 
 
 var app = builder.Build();
+var modelProjectAssembly = typeof(CompaignViewModel).Assembly;
+AutoMapperConfig.RegisterMappings(modelProjectAssembly);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

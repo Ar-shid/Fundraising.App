@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundRaisingApp", "FundRaisi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundRaising.Data", "..\FundRaising.Data\FundRaising.Data.csproj", "{D879B390-E8FC-48E5-8D6B-6809EAD7365F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundRaising.Services", "..\FundRaising.Services\FundRaising.Services.csproj", "{29B2D98A-C99F-44C1-AF37-B5D46836AB2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundRaising.Services", "..\FundRaising.Services\FundRaising.Services.csproj", "{29B2D98A-C99F-44C1-AF37-B5D46836AB2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundRaising.DTO", "..\FundRaising.DTO\FundRaising.DTO.csproj", "{D820A82B-998E-4695-8994-CC1E4164549F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundRaising.DTO", "..\FundRaising.DTO\FundRaising.DTO.csproj", "{D820A82B-998E-4695-8994-CC1E4164549F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundRaising.Common", "..\FundRaising.Common\FundRaising.Common.csproj", "{9BB910A4-37F6-4132-8BD2-3B4E3725F774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D820A82B-998E-4695-8994-CC1E4164549F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D820A82B-998E-4695-8994-CC1E4164549F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D820A82B-998E-4695-8994-CC1E4164549F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB910A4-37F6-4132-8BD2-3B4E3725F774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB910A4-37F6-4132-8BD2-3B4E3725F774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB910A4-37F6-4132-8BD2-3B4E3725F774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB910A4-37F6-4132-8BD2-3B4E3725F774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

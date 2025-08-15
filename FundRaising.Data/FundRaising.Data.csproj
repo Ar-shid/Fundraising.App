@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FundRaising.DTO\FundRaising.DTO.csproj" />
+    <ProjectReference Include="..\FundRaising.Common\FundRaising.Common.csproj" />
   </ItemGroup>
 
 </Project>

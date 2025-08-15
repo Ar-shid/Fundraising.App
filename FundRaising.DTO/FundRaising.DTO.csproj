@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FundRaising.Common\FundRaising.Common.csproj" />
+    <ProjectReference Include="..\FundRaising.Data\FundRaising.Data.csproj" />
+  </ItemGroup>
+
 </Project>

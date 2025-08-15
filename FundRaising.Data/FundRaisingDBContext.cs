@@ -21,6 +21,10 @@ namespace FundRaising.Data
 
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<Compaign> Compaigns { get; set; }
+        public DbSet<CompaignGroup> CompaignGroups { get; set; }
+        public DbSet<CompaignImage> CompaignImages { get; set; }
+        public DbSet<CompaignOrganizer> CompaignOrganizers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

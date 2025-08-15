@@ -1,5 +1,5 @@
 ﻿using FundRaising.Services.Auth;
-using System.IdentityModel.Tokens.Jwt;
+using FundRaising.Services.CompaignService;
 
 namespace FundRaisingApp.Infrastructure.Configuration
 {
@@ -13,6 +13,7 @@ namespace FundRaisingApp.Infrastructure.Configuration
         }
         private static void AddServices(IServiceCollection services) =>
            services
-               .AddTransient<IAuthService, AuthService>();
+               .AddTransient<IAuthService, AuthService>()
+               .AddTransient<ICompaignService, CompaignService>();
     }
 }
