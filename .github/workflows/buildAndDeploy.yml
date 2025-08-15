@@ -1,0 +1,32 @@
+name: "Build"
+run-name: "[Fundraising] .NET Build by ${{github.actor}}"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build .NET Applications
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'
+
+      - name: Build FundRaisingApp
+        run: dotnet publish "FundRaising.App/FundRaising/FundRaisingApp.csproj" -c Release -o release/ABDrivingSchool
+
+      - name: Upload Artifacts to Windows Server via SCP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          source: "release/FundRaisingApp"
+          target: "C:/fundraising"
