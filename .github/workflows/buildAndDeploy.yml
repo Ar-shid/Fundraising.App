@@ -17,9 +17,14 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0'
+      - name: Restore Dependencies
+        run: dotnet restore "FundRaisingApp/FundRaisingApp.csproj"
 
-      - name: Build FundRaisingApp
-        run: dotnet publish "FundRaising.App/FundRaising/FundRaisingApp.csproj" -c Release -o release/ABDrivingSchool
+      - name: Build Project
+        run: dotnet build "FundRaisingApp/FundRaisingApp.csproj" -c Release
+
+      - name: Publish FundRaisingApp
+        run: dotnet publish "FundRaisingApp/FundRaisingApp.csproj" -c Release -o release/FundRaisingApp
 
       - name: Upload Artifacts to Windows Server via SCP
         uses: appleboy/scp-action@v0.1.4
@@ -29,4 +34,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           source: "release/FundRaisingApp"
-          target: "C:/fundraising"
+          target: "C:/fundrasing"
