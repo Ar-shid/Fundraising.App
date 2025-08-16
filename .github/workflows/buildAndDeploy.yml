@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Build FundRaisingApp
-        run: dotnet publish "FundRaising.App/FundRaising/FundRaisingApp.csproj" -c Release -o release/ABDrivingSchool
+        run: dotnet publish "FundRaising/FundRaisingApp.csproj" -c Release -o release/FundRaisingApp
 
       - name: Upload Artifacts to Windows Server via SCP
         uses: appleboy/scp-action@v0.1.4
