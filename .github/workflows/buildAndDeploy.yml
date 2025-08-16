@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           source: "release/FundRaisingApp"
-          target: "C:/fundraising"
+          target: "C:/fundrasing"
