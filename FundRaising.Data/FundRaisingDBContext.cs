@@ -25,6 +25,13 @@ namespace FundRaising.Data
         public DbSet<CompaignGroup> CompaignGroups { get; set; }
         public DbSet<CompaignImage> CompaignImages { get; set; }
         public DbSet<CompaignOrganizer> CompaignOrganizers { get; set; }
+        public DbSet<CompaignProduct> CompaignProducts { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupMembers> GroupMembers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

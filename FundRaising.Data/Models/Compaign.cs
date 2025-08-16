@@ -32,5 +32,6 @@ namespace FundRaising.Data.Models
         public ICollection<CompaignImage> Images { get; set; }
         public ICollection<CompaignOrganizer> Organizers { get; set; }
         public ICollection<CompaignGroup> Groups { get; set; }
+        public ICollection<CompaignProduct> Products { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using FundRaising.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FundRaising.Data.Migrations
 {
     [DbContext(typeof(FundRaisingDBContext))]
-    partial class FundRaisingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250816104706_Added_ProductTables")]
+    partial class Added_ProductTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,7 +146,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.Compaign", b =>
@@ -210,7 +213,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.ToTable("Compaigns", (string)null);
+                    b.ToTable("Compaigns");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.CompaignGroup", b =>
@@ -233,7 +236,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("CompaignGroups", (string)null);
+                    b.ToTable("CompaignGroups");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.CompaignImage", b =>
@@ -255,7 +258,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("CompaignId");
 
-                    b.ToTable("CompaignImages", (string)null);
+                    b.ToTable("CompaignImages");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.CompaignOrganizer", b =>
@@ -279,7 +282,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("OrganizerId");
 
-                    b.ToTable("CompaignOrganizers", (string)null);
+                    b.ToTable("CompaignOrganizers");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.CompaignProduct", b =>
@@ -302,7 +305,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CompaignProducts", (string)null);
+                    b.ToTable("CompaignProducts");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.Group", b =>
@@ -353,7 +356,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.ToTable("Groups", (string)null);
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.GroupMembers", b =>
@@ -377,7 +380,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("GroupMembers", (string)null);
+                    b.ToTable("GroupMembers");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.Permission", b =>
@@ -401,7 +404,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permissions", (string)null);
+                    b.ToTable("Permissions");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.Product", b =>
@@ -465,7 +468,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.ProductCategory", b =>
@@ -488,7 +491,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategories", (string)null);
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.ProductImage", b =>
@@ -510,7 +513,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages", (string)null);
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.Role", b =>
@@ -553,7 +556,7 @@ namespace FundRaising.Data.Migrations
 
                     b.HasIndex("PermissionId");
 
-                    b.ToTable("RolePermissions", (string)null);
+                    b.ToTable("RolePermissions");
                 });
 
             modelBuilder.Entity("FundRaising.Data.Models.UserRole", b =>

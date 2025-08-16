@@ -12,4 +12,11 @@
         Active = 3,
         InActive = 4
     }
+    public enum ApprovalStatus
+    {
+        Draft = 1,
+        SentForApproval = 2,
+        Approved = 3,
+        Denied = 4
+    }
 }

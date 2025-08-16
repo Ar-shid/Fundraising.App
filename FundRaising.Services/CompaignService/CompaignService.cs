@@ -2,6 +2,7 @@
 using FundRaising.Data;
 using FundRaising.Data.Models;
 using FundRaising.DTO.CompaignModels;
+using FundRaising.Services.FileService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,11 @@ namespace FundRaising.Services.CompaignService
     public class CompaignService: ICompaignService
     {
         protected readonly FundRaisingDBContext _context;
-        private readonly IWebHostEnvironment _env;
-        public CompaignService(FundRaisingDBContext context, IWebHostEnvironment env)
+        private readonly IFileService _fileService;
+        public CompaignService(FundRaisingDBContext context, IFileService fileService)
         {
             _context = context;
-            _env = env;
+            _fileService = fileService;
         }
         public async Task<IEnumerable<CompaignViewModel>> GetAllAsync()
         {
@@ -55,20 +56,12 @@ namespace FundRaising.Services.CompaignService
             {
                 foreach (var file in files)
                 {
-                    try
+                    var relativePath = await _fileService.SaveFileAsync(file, "CompaignImages");
+                    _context.CompaignImages.Add(new CompaignImage
                     {
-                        var relativePath = await SaveImageFile(file);
-                        _context.CompaignImages.Add(new CompaignImage
-                        {
-                            CompaignId = compaign.Id,
-                            Image = relativePath
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    
+                        CompaignId = compaign.Id,
+                        Image = relativePath
+                    });
                 }
                 await _context.SaveChangesAsync();
             }
@@ -85,12 +78,12 @@ namespace FundRaising.Services.CompaignService
 
             _context.Entry(existing).CurrentValues.SetValues(compaign);
             existing.UpdatedDate = DateTime.UtcNow;
-
+            existing.UpdatedById = compaign.UpdatedByName;
             if (newFiles != null && newFiles.Count > 0)
             {
                 foreach (var file in newFiles)
                 {
-                    var relativePath = await SaveImageFile(file);
+                    var relativePath = await _fileService.SaveFileAsync(file, "CompaignImages");
                     _context.CompaignImages.Add(new CompaignImage
                     {
                         CompaignId = existing.Id,
@@ -113,38 +106,13 @@ namespace FundRaising.Services.CompaignService
 
             foreach (var img in compaign.Images)
             {
-                DeleteImageFile(img.Image);
+                _fileService.DeleteFile(img.Image);
             }
             _context.CompaignImages.RemoveRange(compaign.Images);
             _context.Compaigns.Remove(compaign);
             await _context.SaveChangesAsync();
             return true;
         }
-
-        private async Task<string> SaveImageFile(IFormFile file)
-        {
-            var folderPath = Path.Combine(_env.ContentRootPath, "Images", "CompaignImages");
-            if (!Directory.Exists(folderPath))
-                Directory.CreateDirectory(folderPath);
-
-            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(folderPath, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            return $"/Images/CompaignImages/{fileName}";
-        }
-
-        private void DeleteImageFile(string relativePath)
-        {
-            var fullPath = Path.Combine(_env.ContentRootPath, relativePath.TrimStart('/'));
-            if (File.Exists(fullPath))
-            {
-                File.Delete(fullPath);
-            }
-        }
+       
     }
 }

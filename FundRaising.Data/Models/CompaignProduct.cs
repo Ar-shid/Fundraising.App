@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace FundRaising.Data.Models
 {
-    public class GroupMembers
+    public class CompaignProduct
     {
         public int Id { get; set; }
-        public int GroupId { get; set; }
+        public int CompaignId { get; set; }
         [JsonIgnore]
-        public Group Group { get; set; }
-        public string MemberId { get; set; }
+        public Compaign Compaign { get; set; }
+        public int ProductId { get; set; }
         [JsonIgnore]
-        public ApplicationUser Member { get; set; }
+        public Product Product { get; set; }
     }
 }

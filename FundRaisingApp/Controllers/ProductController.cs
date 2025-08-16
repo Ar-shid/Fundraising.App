@@ -1,6 +1,6 @@
 using FundRaising.Data.Models;
-using FundRaising.DTO.CompaignModels;
-using FundRaising.Services.CompaignService;
+using FundRaising.DTO.ProductModels;
+using FundRaising.Services.ProductService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,48 +11,48 @@ namespace FundRaisingApp.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class CompaignController : ControllerBase
+    public class ProductController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly ICompaignService _compaignService;
+        private readonly IProductService _productService;
 
-        public CompaignController(ICompaignService compaignService,
+        public ProductController(IProductService productService,
                               IConfiguration configuration)
         {
-            _compaignService = compaignService;
+            _productService = productService;
             _configuration = configuration;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var compaigns = await _compaignService.GetAllAsync();
-            return Ok(compaigns);
+            var products = await _productService.GetAllAsync();
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var compaign = await _compaignService.GetByIdAsync(id);
-            if (compaign == null) return NotFound();
-            return Ok(compaign);
+            var product = await _productService.GetByIdAsync(id);
+            if (product == null) return NotFound();
+            return Ok(product);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] CompaignViewModel dto)
+        public async Task<IActionResult> Create([FromForm] ProductViewModel dto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             dto.CreatedByName = userId;
-            var result = await _compaignService.CreateAsync(dto, dto.UploadImages);
+            var result = await _productService.CreateAsync(dto, dto.UploadImages);
             return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromForm] CompaignViewModel dto)
+        public async Task<IActionResult> Update(int id, [FromForm] ProductViewModel dto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             dto.UpdatedByName = userId;
-            var updated = await _compaignService.UpdateAsync(dto, dto.UploadImages);
+            var updated = await _productService.UpdateAsync(dto, dto.UploadImages);
             if (!updated) return NotFound();
             return Ok(updated);
         }
@@ -60,7 +60,7 @@ namespace FundRaisingApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var deleted = await _compaignService.DeleteAsync(id);
+            var deleted = await _productService.DeleteAsync(id);
             if (!deleted) return NotFound();
             return Ok(deleted);
         }
