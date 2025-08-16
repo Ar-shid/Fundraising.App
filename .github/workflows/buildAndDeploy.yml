@@ -18,13 +18,13 @@ jobs:
         with:
           dotnet-version: '8.0'
       - name: Restore Dependencies
-        run: dotnet restore "Fundraising.App/FundRaisingApp/FundRaisingApp.csproj"
+        run: dotnet restore "FundRaisingApp/FundRaisingApp.csproj"
 
       - name: Build Project
-        run: dotnet build "Fundraising.App/FundRaisingApp/FundRaisingApp.csproj" -c Release
+        run: dotnet build "FundRaisingApp/FundRaisingApp.csproj" -c Release
 
       - name: Publish FundRaisingApp
-        run: dotnet publish "Fundraising.App/FundRaisingApp/FundRaisingApp.csproj" -c Release -o release/FundRaisingApp
+        run: dotnet publish "FundRaisingApp/FundRaisingApp.csproj" -c Release -o release/FundRaisingApp
 
       - name: Upload Artifacts to Windows Server via SCP
         uses: appleboy/scp-action@v0.1.4
